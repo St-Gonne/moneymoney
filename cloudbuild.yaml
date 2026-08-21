@@ -1,0 +1,47 @@
+substitutions:
+  _IMAGE_TAG: 'latest'
+
+steps:
+  # 1. Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'asia-south1-docker.pkg.dev/$PROJECT_ID/moneymoney/backend:$_IMAGE_TAG'
+      - './backend'
+
+  # 2. Push container image to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'asia-south1-docker.pkg.dev/$PROJECT_ID/moneymoney/backend:$_IMAGE_TAG'
+
+  # 3. Deploy container image to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'moneymoney-backend'
+      - '--image'
+      - 'asia-south1-docker.pkg.dev/$PROJECT_ID/moneymoney/backend:$_IMAGE_TAG'
+      - '--region'
+      - 'asia-south1'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--memory'
+      - '1024Mi'
+      - '--cpu'
+      - '1'
+      - '--min-instances'
+      - '0'
+      - '--max-instances'
+      - '10'
+      - '--set-env-vars=^#^ENVIRONMENT=production#ALLOWED_ORIGINS=https://family-vault-demo.web.app,https://family-vault-demo.firebaseapp.com'
+
+images:
+  - 'asia-south1-docker.pkg.dev/$PROJECT_ID/moneymoney/backend:$_IMAGE_TAG'
+
+options:
+  logging: CLOUD_LOGGING_ONLY

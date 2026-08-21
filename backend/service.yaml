@@ -1,0 +1,31 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: moneymoney-backend
+  labels:
+    cloud.googleapis.com/location: asia-south1
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: '0'
+        autoscaling.knative.dev/maxScale: '10'
+        run.googleapis.com/cpu-throttling: 'true'
+        run.googleapis.com/startup-cpu-boost: 'true'
+    spec:
+      containerConcurrency: 80
+      timeoutSeconds: 300
+      containers:
+      - image: asia-south1-docker.pkg.dev/family-vault-demo/moneymoney/backend:latest
+        ports:
+        - name: http1
+          containerPort: 8080
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1024Mi
+        env:
+        - name: ENVIRONMENT
+          value: production
+        - name: ALLOWED_ORIGINS
+          value: https://family-vault-demo.web.app,https://vault.example.com,https://family-vault-demo.firebaseapp.com

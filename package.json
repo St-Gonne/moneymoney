@@ -1,0 +1,37 @@
+{
+  "name": "moneymoneyv1",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "test:ui": "node scripts/test-ui-ux.mjs",
+    "test:xirr": "node --experimental-strip-types scripts/test-xirr.mjs",
+    "test:tax": "node --experimental-strip-types scripts/test-tax-engine.mjs",
+    "test": "npm run test:xirr && npm run test:tax && npm run test:ui",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@google/genai": "^2.17.1",
+    "clsx": "^2.1.1",
+    "firebase": "^12.17.1",
+    "framer-motion": "^13.1.0",
+    "html2canvas": "^1.4.1",
+    "lucide-react": "^1.31.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "recharts": "^3.10.1",
+    "tailwind-merge": "^3.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.4",
+    "oxlint": "^1.75.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.2.0"
+  }
+}

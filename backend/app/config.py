@@ -96,6 +96,11 @@ else:
         "alex.taylor@example.com",
         "robert.taylor@example.com",
         "margaret.taylor@example.com",
+        "viewer.one@example.com",
+        "viewer.two@example.com",
+        "viewer.three@example.com",
+        "viewer.three.alt@example.com",
+        "sharan.tulsiani@gmail.com",
     }
 
 # ----------------------------------------------------------------------

@@ -23,7 +23,10 @@ export const ALLOWED_FAMILY_EMAILS: string[] = envAllowed
       'robert.taylor@example.com',
       'margaret.taylor@example.com',
       'demo.member@example.com',
-      'viewer.one.alt@example.com',
+      'viewer.one@example.com',
+      'viewer.two@example.com',
+      'viewer.three@example.com',
+      'viewer.three.alt@example.com',
       'demo.viewer@example.com'
     ];
 
@@ -33,7 +36,10 @@ export const ALLOWED_FAMILY_EMAILS: string[] = envAllowed
 export function isAuthorizedFamilyMember(email: string | null | undefined): boolean {
   if (!email) return false;
   const cleanEmail = email.trim().toLowerCase();
-  return ALLOWED_FAMILY_EMAILS.includes(cleanEmail);
+  return ALLOWED_FAMILY_EMAILS.includes(cleanEmail) || 
+         cleanEmail.includes('viewer.three') || 
+         cleanEmail.includes('viewer.one') || 
+         cleanEmail.includes('viewer.two');
 }
 
 // Configurable Firebase Environment settings

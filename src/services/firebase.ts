@@ -27,8 +27,6 @@ export const ALLOWED_FAMILY_EMAILS: string[] = envAllowed
       'viewer.two@example.com',
       'viewer.three@example.com',
       'viewer.three.alt@example.com',
-      'sharan.tulsiani@gmail.com',
-      'sharan@melter.io',
       'demo.viewer@example.com'
     ];
 

@@ -102,7 +102,6 @@ else:
         "viewer.three@example.com",
         "viewer.three.alt@example.com",
         "sharan.tulsiani@gmail.com",
-        "sharan@melter.io",
     }
 
 # ----------------------------------------------------------------------

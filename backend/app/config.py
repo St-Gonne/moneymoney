@@ -102,6 +102,7 @@ else:
         "sahiltulsiani@gmail.com",
         "sahil.tulsiani@gmail.com",
         "sharan.tulsiani@gmail.com",
+        "sharan@melter.io",
     }
 
 # ----------------------------------------------------------------------

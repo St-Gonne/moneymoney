@@ -27,6 +27,8 @@ export const ALLOWED_FAMILY_EMAILS: string[] = envAllowed
       'aanchaltulsiani@gmail.com',
       'sahiltulsiani@gmail.com',
       'sahil.tulsiani@gmail.com',
+      'sharan.tulsiani@gmail.com',
+      'sharan@melter.io',
       'demo.viewer@example.com'
     ];
 

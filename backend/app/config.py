@@ -97,6 +97,7 @@ else:
         "robert.taylor@example.com",
         "margaret.taylor@example.com",
         "viewer.one@example.com",
+        "viewer.one.alt@example.com",
         "viewer.two@example.com",
         "viewer.three@example.com",
         "viewer.three.alt@example.com",

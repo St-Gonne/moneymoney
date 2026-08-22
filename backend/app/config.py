@@ -97,6 +97,7 @@ else:
         "robert.taylor@example.com",
         "margaret.taylor@example.com",
         "chiragsuchde@gmail.com",
+        "chirag.suchde@gmail.com",
         "aanchaltulsiani@gmail.com",
         "sahiltulsiani@gmail.com",
         "sahil.tulsiani@gmail.com",

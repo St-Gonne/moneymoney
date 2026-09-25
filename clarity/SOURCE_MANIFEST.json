@@ -1,0 +1,363 @@
+{
+  "source_date": "2026-09-25",
+  "scope": "Current Clarity connected synthetic source graph. No git history, credentials, family data or runtime state.",
+  "adaptations": {
+    "src/index.css": "Removed remote Google Fonts import; uses installed system fallback fonts. Normalized trailing whitespace only.",
+    "backend/app/models/__init__.py": "Omit legacy package re-exports outside the standalone source graph; direct module imports unchanged.",
+    "backend/app/parsers/__init__.py": "Omit legacy package re-exports outside the standalone source graph; direct module imports unchanged.",
+    "src/types/portfolio.ts": " Normalized trailing whitespace only.",
+    "src/utils/formatters.ts": " Normalized trailing whitespace only."
+  },
+  "files": [
+    {
+      "path": "backend/app/__init__.py",
+      "upstream_sha256": "1cbd0345ada1ae5437f0f81e64df0d971e26710b6a896745d47b9725e66fe985",
+      "published_sha256": "1cbd0345ada1ae5437f0f81e64df0d971e26710b6a896745d47b9725e66fe985"
+    },
+    {
+      "path": "backend/app/account_data_store.py",
+      "upstream_sha256": "367e013216f0991e41cc82543ae63aaad2ad7c2c5c6708aac9d77e3e22fb1bb1",
+      "published_sha256": "367e013216f0991e41cc82543ae63aaad2ad7c2c5c6708aac9d77e3e22fb1bb1"
+    },
+    {
+      "path": "backend/app/api/__init__.py",
+      "upstream_sha256": "620baca37249f5f337df8a98d30acd36760da2c8eec253457c68c65a1f2314b5",
+      "published_sha256": "620baca37249f5f337df8a98d30acd36760da2c8eec253457c68c65a1f2314b5"
+    },
+    {
+      "path": "backend/app/api/account_data.py",
+      "upstream_sha256": "0cd0ca568d792c5a7d76b577732820f3f016dd445534570d7f71336cb752931b",
+      "published_sha256": "0cd0ca568d792c5a7d76b577732820f3f016dd445534570d7f71336cb752931b"
+    },
+    {
+      "path": "backend/app/api/nsdl.py",
+      "upstream_sha256": "01f9f6f1b653cc5e1a620070e95d8732c24e61c4b670482a17e3b369e8c70bb8",
+      "published_sha256": "01f9f6f1b653cc5e1a620070e95d8732c24e61c4b670482a17e3b369e8c70bb8"
+    },
+    {
+      "path": "backend/app/auth_perimeter.py",
+      "upstream_sha256": "6228a03f2a95fc51c2ae5bb02a708b9aa451961d2f956eb23d1e609f42884b32",
+      "published_sha256": "6228a03f2a95fc51c2ae5bb02a708b9aa451961d2f956eb23d1e609f42884b32"
+    },
+    {
+      "path": "backend/app/family_activity.py",
+      "upstream_sha256": "d017f69d99752247c73b68c9970d53e0d5000a78d84fb3efbd5bec0ee909fea4",
+      "published_sha256": "d017f69d99752247c73b68c9970d53e0d5000a78d84fb3efbd5bec0ee909fea4"
+    },
+    {
+      "path": "backend/app/family_portfolio.py",
+      "upstream_sha256": "b665721030f9aeff6f001bea3b0b5a50ccffb099f3d9c2dab2fbe63bb38ea2a9",
+      "published_sha256": "b665721030f9aeff6f001bea3b0b5a50ccffb099f3d9c2dab2fbe63bb38ea2a9"
+    },
+    {
+      "path": "backend/app/family_two_person_config.py",
+      "upstream_sha256": "2ce902393da2a0836ab930850196dd85fec57f3b063f8f327e6d046296a2b654",
+      "published_sha256": "2ce902393da2a0836ab930850196dd85fec57f3b063f8f327e6d046296a2b654"
+    },
+    {
+      "path": "backend/app/membership.py",
+      "upstream_sha256": "650e017d663069ead637c29016a7eb2d4d9e9307d0410b4cc63d54c73308d511",
+      "published_sha256": "650e017d663069ead637c29016a7eb2d4d9e9307d0410b4cc63d54c73308d511"
+    },
+    {
+      "path": "backend/app/models/__init__.py",
+      "upstream_sha256": "70cea414145714d49b04c8d2c1331a2cb14de893bdc0f27b2fcec2c849734bce",
+      "published_sha256": "f9684862d10c012c355e8315e6ea44705691c7b9a47a03b68b6d3680552a2183"
+    },
+    {
+      "path": "backend/app/models/account_data.py",
+      "upstream_sha256": "e85947a7c7c350fbeb2dd334bb22935259ee76f7f800f75f5ab5bd021737de9d",
+      "published_sha256": "e85947a7c7c350fbeb2dd334bb22935259ee76f7f800f75f5ab5bd021737de9d"
+    },
+    {
+      "path": "backend/app/models/nsdl_snapshot.py",
+      "upstream_sha256": "aa87ed6c791430d8c3a6159fa51c47c39aa400c5a61cf6955043d6fba405789b",
+      "published_sha256": "aa87ed6c791430d8c3a6159fa51c47c39aa400c5a61cf6955043d6fba405789b"
+    },
+    {
+      "path": "backend/app/models/quotes.py",
+      "upstream_sha256": "08899212da072e9b90ee90a26f37331ae14efb47dd537e879321c0ffe6243064",
+      "published_sha256": "08899212da072e9b90ee90a26f37331ae14efb47dd537e879321c0ffe6243064"
+    },
+    {
+      "path": "backend/app/models/valuation.py",
+      "upstream_sha256": "303f55443dd11621b265ba6de0ef759bdabe3cc6258f5b5496598dfb2bafeaa9",
+      "published_sha256": "303f55443dd11621b265ba6de0ef759bdabe3cc6258f5b5496598dfb2bafeaa9"
+    },
+    {
+      "path": "backend/app/nsdl_service.py",
+      "upstream_sha256": "00f8bdad1604c6ee465c90bd2dbf6994f319a9d67dd7e916551a6903abc438f6",
+      "published_sha256": "00f8bdad1604c6ee465c90bd2dbf6994f319a9d67dd7e916551a6903abc438f6"
+    },
+    {
+      "path": "backend/app/nsdl_store.py",
+      "upstream_sha256": "a84b68c82442594ca44fd17864ca71c2ead36aaade8b74704e200c21856107c6",
+      "published_sha256": "a84b68c82442594ca44fd17864ca71c2ead36aaade8b74704e200c21856107c6"
+    },
+    {
+      "path": "backend/app/parsers/__init__.py",
+      "upstream_sha256": "26b9aa2c6f212d3af647bbbadb1e6df781fbbfc4245dc75d4c3dd901ee2fe3b0",
+      "published_sha256": "3cdc6e258ef2fca5b9987601c69e1238eab1fb049aad1372f7f93c2302002490"
+    },
+    {
+      "path": "backend/app/parsers/nsdl_parser.py",
+      "upstream_sha256": "63e79ffe96753f2d9dc5d66bcdde8d31557496e8b3d669cdaf563c0d99a57c13",
+      "published_sha256": "63e79ffe96753f2d9dc5d66bcdde8d31557496e8b3d669cdaf563c0d99a57c13"
+    },
+    {
+      "path": "backend/app/parsers/schwab_snapshot.py",
+      "upstream_sha256": "de595c22aed2e5873757d09ddb8f11c2cf361dcf53f8dc460f00f50120a69493",
+      "published_sha256": "de595c22aed2e5873757d09ddb8f11c2cf361dcf53f8dc460f00f50120a69493"
+    },
+    {
+      "path": "backend/app/private_nsdl_app.py",
+      "upstream_sha256": "380d5096a416112e478a4f8e32c9a53f2a0cf0e207086317ed8304502b56d4d3",
+      "published_sha256": "380d5096a416112e478a4f8e32c9a53f2a0cf0e207086317ed8304502b56d4d3"
+    },
+    {
+      "path": "backend/app/private_nsdl_identity.py",
+      "upstream_sha256": "77bbca4a2aec13ad12669d1de81ae04422bf9be399ed9e51ac1ece187b75c593",
+      "published_sha256": "77bbca4a2aec13ad12669d1de81ae04422bf9be399ed9e51ac1ece187b75c593"
+    },
+    {
+      "path": "backend/app/quote_cache.py",
+      "upstream_sha256": "b539c22e4d60d4abe011f2ab719d94ea00adf624006cf2d939b6f0fe2dc65d2b",
+      "published_sha256": "b539c22e4d60d4abe011f2ab719d94ea00adf624006cf2d939b6f0fe2dc65d2b"
+    },
+    {
+      "path": "backend/app/quote_provider.py",
+      "upstream_sha256": "ba9657b63f75b6d4637997938065855bd103113320e30a95dd9ad51293f6b51d",
+      "published_sha256": "ba9657b63f75b6d4637997938065855bd103113320e30a95dd9ad51293f6b51d"
+    },
+    {
+      "path": "backend/app/quote_service.py",
+      "upstream_sha256": "1d3474eb4c1e72abb9bb7255c1eb42e7d6029acba6753410caeb57f9490e2bba",
+      "published_sha256": "1d3474eb4c1e72abb9bb7255c1eb42e7d6029acba6753410caeb57f9490e2bba"
+    },
+    {
+      "path": "backend/app/valuation_service.py",
+      "upstream_sha256": "1cc0a6d56516ae0e8b24af8dacd27938ac82cd337f5b5cbd84defff49de7baa2",
+      "published_sha256": "1cc0a6d56516ae0e8b24af8dacd27938ac82cd337f5b5cbd84defff49de7baa2"
+    },
+    {
+      "path": "backend/tests/test_account_data.py",
+      "upstream_sha256": "91122ab2aad1a62f94efbc41a0d1be5b7bde07a10b84fab4004cee4d4e9b2e24",
+      "published_sha256": "91122ab2aad1a62f94efbc41a0d1be5b7bde07a10b84fab4004cee4d4e9b2e24"
+    },
+    {
+      "path": "backend/tests/test_mvp_dated_valuation.py",
+      "upstream_sha256": "21df87461183b7742fd0dd8452acd26d697c06fd11ab517313e1ecb96baa711e",
+      "published_sha256": "21df87461183b7742fd0dd8452acd26d697c06fd11ab517313e1ecb96baa711e"
+    },
+    {
+      "path": "scripts/private_nsdl_connected_backend.py",
+      "upstream_sha256": "3e63d0a1ec2d83ec7ee97422912beec9cc59805648e06875c8224e40a80b6f3c",
+      "published_sha256": "3e63d0a1ec2d83ec7ee97422912beec9cc59805648e06875c8224e40a80b6f3c"
+    },
+    {
+      "path": "scripts/test-clarity-normal-view.mjs",
+      "upstream_sha256": "e5543375f480153f90d3349a9dfb04c2ec9bf7d23179f08b652d1952f0d1cc4c",
+      "published_sha256": "e5543375f480153f90d3349a9dfb04c2ec9bf7d23179f08b652d1952f0d1cc4c"
+    },
+    {
+      "path": "scripts/test-portfolio-visuals.mjs",
+      "upstream_sha256": "6e257f61d90be97e0b3d772a1f16636cf54ba9b86302ee204e0f08cde583c335",
+      "published_sha256": "6e257f61d90be97e0b3d772a1f16636cf54ba9b86302ee204e0f08cde583c335"
+    },
+    {
+      "path": "scripts/test-private-comfort-voice-local.mjs",
+      "upstream_sha256": "232da15d2a9220537f37c0977d25895a8188814a859a329d214dc02739f91150",
+      "published_sha256": "232da15d2a9220537f37c0977d25895a8188814a859a329d214dc02739f91150"
+    },
+    {
+      "path": "scripts/test-private-nsdl-connected-demo.py",
+      "upstream_sha256": "69163926a720de19eee775e54ef1225af0b207ce29b7add3cc230d1f57b4fe03",
+      "published_sha256": "69163926a720de19eee775e54ef1225af0b207ce29b7add3cc230d1f57b4fe03"
+    },
+    {
+      "path": "src/components/ComfortVoicePanel.css",
+      "upstream_sha256": "45ce84ae80e15e63607b71495b9213d7f1b400967c9e2a6f3c5acabc4e2aa6bd",
+      "published_sha256": "45ce84ae80e15e63607b71495b9213d7f1b400967c9e2a6f3c5acabc4e2aa6bd"
+    },
+    {
+      "path": "src/components/ComfortVoicePanel.tsx",
+      "upstream_sha256": "c0f736bcb699c0bc3dfbdd3397bcd75fde93875c722c9f42528f82b6956d7c7e",
+      "published_sha256": "c0f736bcb699c0bc3dfbdd3397bcd75fde93875c722c9f42528f82b6956d7c7e"
+    },
+    {
+      "path": "src/components/DadModeView.tsx",
+      "upstream_sha256": "b2affb4fed5b647c393145d51cd3e2ae78065dd777074926875301f7e61095f7",
+      "published_sha256": "b2affb4fed5b647c393145d51cd3e2ae78065dd777074926875301f7e61095f7"
+    },
+    {
+      "path": "src/components/GmailImportPanel.tsx",
+      "upstream_sha256": "d154bff518d591de3b66c66fd06b2993359c2f053e9c647e0111f1eae0e8fb06",
+      "published_sha256": "d154bff518d591de3b66c66fd06b2993359c2f053e9c647e0111f1eae0e8fb06"
+    },
+    {
+      "path": "src/components/ManualEntryPanel.tsx",
+      "upstream_sha256": "721bf5cd1e2c112c3e2fd9848c7103fd2267ec82bccaa3f843badb6443569298",
+      "published_sha256": "721bf5cd1e2c112c3e2fd9848c7103fd2267ec82bccaa3f843badb6443569298"
+    },
+    {
+      "path": "src/components/NsdlPortfolioView.css",
+      "upstream_sha256": "7cc39f2967fd2b35dd3bd4720e17de8bbeee5fe66a1b0e797303229664840d76",
+      "published_sha256": "7cc39f2967fd2b35dd3bd4720e17de8bbeee5fe66a1b0e797303229664840d76"
+    },
+    {
+      "path": "src/components/NsdlPortfolioView.tsx",
+      "upstream_sha256": "f9a03a71788f85040f17f09ae47b017787e0946d528552ba35be6921a695d20b",
+      "published_sha256": "f9a03a71788f85040f17f09ae47b017787e0946d528552ba35be6921a695d20b"
+    },
+    {
+      "path": "src/components/PortfolioReadinessPanel.tsx",
+      "upstream_sha256": "163133ea579df4075b8e8370512fafb3d3f1d5218b77494ed9f537b57929cb94",
+      "published_sha256": "163133ea579df4075b8e8370512fafb3d3f1d5218b77494ed9f537b57929cb94"
+    },
+    {
+      "path": "src/components/PortfolioVisualsPanel.tsx",
+      "upstream_sha256": "764dabb2947daca10f5dc104a597bb8274dbde92fd3e291bf3844f433344535c",
+      "published_sha256": "764dabb2947daca10f5dc104a597bb8274dbde92fd3e291bf3844f433344535c"
+    },
+    {
+      "path": "src/components/PrivateNsdlApp.tsx",
+      "upstream_sha256": "799c8607d669eb5064761627c58f4fa942c2270732e6677bc7800ef51db46004",
+      "published_sha256": "799c8607d669eb5064761627c58f4fa942c2270732e6677bc7800ef51db46004"
+    },
+    {
+      "path": "src/components/PrivateTheme.css",
+      "upstream_sha256": "6fe76a8826ad699ef648732c9f67f7f066bdfb8ffd722336cd08503f618c0e68",
+      "published_sha256": "6fe76a8826ad699ef648732c9f67f7f066bdfb8ffd722336cd08503f618c0e68"
+    },
+    {
+      "path": "src/contexts/PrivacyContext.tsx",
+      "upstream_sha256": "07556d61508e60bfb8e4dc5de41f5dfc4868f971d0d90ea0632c84f7e71a5704",
+      "published_sha256": "07556d61508e60bfb8e4dc5de41f5dfc4868f971d0d90ea0632c84f7e71a5704"
+    },
+    {
+      "path": "src/hooks/useComfortVoiceLocal.ts",
+      "upstream_sha256": "8c06c35570d6757070f332012a117d31a8aedb3db9da9c0f11a08fa1cca4dc21",
+      "published_sha256": "8c06c35570d6757070f332012a117d31a8aedb3db9da9c0f11a08fa1cca4dc21"
+    },
+    {
+      "path": "src/index.css",
+      "upstream_sha256": "576603d996bd46594009c79b05a6893dc82f71bb3286ef962b47e708e15f72c3",
+      "published_sha256": "104ee5eeb00123c09a5de01b2c16b559d8ab98101b641cf01bc9b3df98d76c5b"
+    },
+    {
+      "path": "src/services/accountDataApi.ts",
+      "upstream_sha256": "b2852e15fcf194741e3055af5176452dd6334d8586033b0fb8e0f2fab95c5c2d",
+      "published_sha256": "b2852e15fcf194741e3055af5176452dd6334d8586033b0fb8e0f2fab95c5c2d"
+    },
+    {
+      "path": "src/services/apiAuth.ts",
+      "upstream_sha256": "73ab121bf935a4bf2ba8ef22981aa05aee98fae38d0a69a31c2c3ea3bea8ba17",
+      "published_sha256": "73ab121bf935a4bf2ba8ef22981aa05aee98fae38d0a69a31c2c3ea3bea8ba17"
+    },
+    {
+      "path": "src/services/comfortVoice/localContracts.ts",
+      "upstream_sha256": "c7bca8fbdf3cd33aeefc3ddf3101c6901cb2bae9c356eabf32ee2b00bb8d09a3",
+      "published_sha256": "c7bca8fbdf3cd33aeefc3ddf3101c6901cb2bae9c356eabf32ee2b00bb8d09a3"
+    },
+    {
+      "path": "src/services/comfortVoice/localVoiceSession.ts",
+      "upstream_sha256": "58b7c216a6fdaacf9d3370ed88202b55cbd125695bb796ca4197469a02433f2e",
+      "published_sha256": "58b7c216a6fdaacf9d3370ed88202b55cbd125695bb796ca4197469a02433f2e"
+    },
+    {
+      "path": "src/services/gmailStatementAttachments.ts",
+      "upstream_sha256": "5dfd8e0f878343a56f4b2c591c887d337e93d1f425f3229b5a5837defec38d05",
+      "published_sha256": "5dfd8e0f878343a56f4b2c591c887d337e93d1f425f3229b5a5837defec38d05"
+    },
+    {
+      "path": "src/services/nsdlApi.ts",
+      "upstream_sha256": "649e7997b4338c7d8055b94d973fe1aa40fd011dcdd386501c893dcf935c682a",
+      "published_sha256": "649e7997b4338c7d8055b94d973fe1aa40fd011dcdd386501c893dcf935c682a"
+    },
+    {
+      "path": "src/services/valuationApi.ts",
+      "upstream_sha256": "ccf077f78156a39c81d73929bbd0232e7a0a6dee4f0e9b57f8a86db6cd2d1e81",
+      "published_sha256": "ccf077f78156a39c81d73929bbd0232e7a0a6dee4f0e9b57f8a86db6cd2d1e81"
+    },
+    {
+      "path": "src/testing/ConnectedPrivateNsdlHarness.tsx",
+      "upstream_sha256": "8eaa5366b9f397e7f51a31a20fcd420891f722be452c8a103274a0dcd6fd9b2b",
+      "published_sha256": "8eaa5366b9f397e7f51a31a20fcd420891f722be452c8a103274a0dcd6fd9b2b"
+    },
+    {
+      "path": "src/types/accountData.ts",
+      "upstream_sha256": "377d1e100b50be07c62bc8a5f6c11939fb9d80e1f6c16b4ff3d0abdd0ccb5011",
+      "published_sha256": "377d1e100b50be07c62bc8a5f6c11939fb9d80e1f6c16b4ff3d0abdd0ccb5011"
+    },
+    {
+      "path": "src/types/nsdl.ts",
+      "upstream_sha256": "c383f034e6762fdc660db0cc6ce47a495a0e72dc01edb050074ebfd82ca9ce08",
+      "published_sha256": "c383f034e6762fdc660db0cc6ce47a495a0e72dc01edb050074ebfd82ca9ce08"
+    },
+    {
+      "path": "src/types/portfolio.ts",
+      "upstream_sha256": "417e8fbd1070ca1f094eb8f3a8bf66988a1398776a8b7fe10975be53dc8d8cd6",
+      "published_sha256": "36e12d84c5ba99120c7c320488cac90de3ed91d61491603dda791e4d577c6e29"
+    },
+    {
+      "path": "src/types/valuation.ts",
+      "upstream_sha256": "baa23386b1ffda916e467a86998b174c59cd06bcb5626aed37fe156e2de24313",
+      "published_sha256": "baa23386b1ffda916e467a86998b174c59cd06bcb5626aed37fe156e2de24313"
+    },
+    {
+      "path": "src/utils/formatters.ts",
+      "upstream_sha256": "d259588697c14c36a739551f3e042cafcb870407ee490a62ea862fb3a52b213d",
+      "published_sha256": "c6bc3420121df1b149a49fc7e19494a942654e7071be8cc563cfa3a0e3d657b2"
+    },
+    {
+      "path": "src/utils/portfolioActivity.ts",
+      "upstream_sha256": "acdbe308133dc601e81dc916e4c394f8cb81c01552af51d5ff192ba06c28c564",
+      "published_sha256": "acdbe308133dc601e81dc916e4c394f8cb81c01552af51d5ff192ba06c28c564"
+    },
+    {
+      "path": "src/utils/portfolioReadiness.ts",
+      "upstream_sha256": "b5418e75d6ca60c9bc4c7045bdc5b66642c564dfbf0d1cf4f79842387b05790a",
+      "published_sha256": "b5418e75d6ca60c9bc4c7045bdc5b66642c564dfbf0d1cf4f79842387b05790a"
+    },
+    {
+      "path": "src/utils/portfolioSafeSupport.ts",
+      "upstream_sha256": "cacc98c6f75f4be494601645627d57737a7bbc8a0f399930274f21d6d95fa70d",
+      "published_sha256": "cacc98c6f75f4be494601645627d57737a7bbc8a0f399930274f21d6d95fa70d"
+    },
+    {
+      "path": "src/utils/portfolioVisuals.ts",
+      "upstream_sha256": "bff83283c0746c9ab279b3a45dbcf3e9c8325bea134c0789e9638f66c38902a8",
+      "published_sha256": "bff83283c0746c9ab279b3a45dbcf3e9c8325bea134c0789e9638f66c38902a8"
+    },
+    {
+      "path": "src/utils/valuationRangeCache.ts",
+      "upstream_sha256": "820d62b2fe34781ace2b33cfae368215f4f7be4ac15bbda4f66457420e2a0241",
+      "published_sha256": "820d62b2fe34781ace2b33cfae368215f4f7be4ac15bbda4f66457420e2a0241"
+    },
+    {
+      "path": "tsconfig.app.json",
+      "upstream_sha256": "8e5d12ba330e7d86409edec74b95451e0db22ee09b9426c94b5bf817571eddb0",
+      "published_sha256": "8e5d12ba330e7d86409edec74b95451e0db22ee09b9426c94b5bf817571eddb0"
+    },
+    {
+      "path": "tsconfig.json",
+      "upstream_sha256": "770b4140bbb581e2dfd9ea9946ffc9c75a1d86ba7d2db5f77c83e37cbdf9d808",
+      "published_sha256": "770b4140bbb581e2dfd9ea9946ffc9c75a1d86ba7d2db5f77c83e37cbdf9d808"
+    },
+    {
+      "path": "tsconfig.node.json",
+      "upstream_sha256": "d366cc0827139db39c61815f22491bbfda56c654354a42ad7795143d314e45e8",
+      "published_sha256": "d366cc0827139db39c61815f22491bbfda56c654354a42ad7795143d314e45e8"
+    },
+    {
+      "path": "backend/tests/fixtures/account_data_schema_v1_cache.json",
+      "upstream_sha256": "0f745e69bab6a56c44b7058dbf47bef9cc29ed870bb7f057b8ad70755ee760e1",
+      "published_sha256": "0f745e69bab6a56c44b7058dbf47bef9cc29ed870bb7f057b8ad70755ee760e1"
+    },
+    {
+      "path": "backend/tests/fixtures/account_data_schema_v2_cache.json",
+      "upstream_sha256": "062a227d94666fd47de89bb767c6beda006e9bf211eaf9cfd4fb654b3cebebcb",
+      "published_sha256": "062a227d94666fd47de89bb767c6beda006e9bf211eaf9cfd4fb654b3cebebcb"
+    }
+  ]
+}

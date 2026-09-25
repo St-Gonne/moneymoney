@@ -1,0 +1,37 @@
+import assert from 'node:assert/strict';
+import { filterVisualObservations, indiaToday, periodBounds, projectPortfolioVisuals, sampleVisualObservations, trustedXirrForAccount } from '../src/utils/portfolioVisuals.ts';
+
+const point = (asOf, value) => ({ asOf, currency: 'INR', value, source: 'Manual', priceDate: asOf });
+assert.equal(indiaToday(new Date('2026-09-21T20:00:00Z')), '2026-09-22', 'periods use Asia/Kolkata today');
+assert.deepEqual(periodBounds('today', '2026-09-22'), { start: '2026-09-22', end: '2026-09-22' });
+assert.deepEqual(periodBounds('last-week', '2026-09-22'), { start: '2026-09-16', end: '2026-09-22' });
+assert.deepEqual(periodBounds('last-month', '2026-03-31'), { start: '2026-02-28', end: '2026-03-31' });
+assert.deepEqual(periodBounds('ytd', '2026-09-22'), { start: '2026-01-01', end: '2026-09-22' });
+assert.deepEqual(periodBounds('current-fy', '2026-09-22'), { start: '2026-04-01', end: '2026-09-22' });
+assert.deepEqual(periodBounds('previous-fy', '2026-02-28'), { start: '2024-04-01', end: '2025-03-31' });
+assert.deepEqual(periodBounds('custom', '2026-09-22', '2026-08-01', '2026-08-31'), { start: '2026-08-01', end: '2026-08-31' });
+assert.deepEqual(filterVisualObservations([point('2026-03-01', 1), point('2026-03-31', 2), point('2026-04-01', 3)], 'custom', '2026-03-02', '2026-03-30'), []);
+assert.deepEqual(sampleVisualObservations([point('2026-01-03', 1), point('2026-01-29', 2), point('2026-02-01', 3)], 'monthly').map((item) => item.asOf), ['2026-01-29', '2026-02-01'], 'monthly sampling keeps actual latest points only');
+
+const metadata = ['Alpha', 'Beta', 'Gamma', 'Delta', 'Epsilon', 'Zeta', 'Eta', 'Review', 'Malformed', 'USD'].map((instrumentName, index) => ({ holdingId: `h${index + 1}`, accountScopeId: index === 9 ? 'acct-usd' : 'acct-inr', instrumentName, instrumentType: 'fund', currency: index === 9 ? 'USD' : 'INR', source: 'MANUAL' }));
+const rows = [900, 800, 700, 600, 500, 400, 300, 200, 'not-a-number', 99].map((currentValue, index) => ({ holdingId: `h${index + 1}`, holdingSource: 'MANUAL', status: 'CALCULATED', currency: index === 9 ? 'USD' : 'INR', currentValue: String(currentValue), source: index < 4 ? 'Manual ledger' : 'Statement source', priceDate: index < 4 ? '2026-09-09' : '2026-09-08', ...(index === 7 ? { reconciliationStatus: 'REVIEW_REQUIRED' } : {}) }));
+const valuation = { asOf: '2026-09-09', inputDigest: 'currency-chart-digest', calculationVersion: 'test', holdings: rows, summaryByCurrency: [{ currency: 'INR', calculatedValue: '4200', statementValue: '0', totalIncludedValue: '4200', calculatedAsOf: '2026-09-09', statementAsOf: null, excludedForReconciliationCount: 1 }] };
+const performance = { asOf: '2026-09-09', inputDigest: 'performance-digest', calculationVersion: 'test', coverage: { historyComplete: true, cashflowCount: 2, reasons: [], scope: 'manual_complete_history_only' }, gain: { status: 'CALCULATED', value: '10', currency: 'INR' }, xirr: { status: 'CALCULATED', valuePct: '19.9704969294' } };
+const context = { portfolioId: 'portfolio', accountId: 'acct-inr', asOf: '2026-09-09' };
+const pairedValuation = { ...valuation, inputDigest: 'performance-digest' };
+const input = { portfolioId: 'portfolio', historyValuations: [{ ...valuation, asOf: '2026-03-02' }, { ...valuation, asOf: '2026-06-01' }, valuation], valuation, performance, performanceContext: context, performanceValuation: pairedValuation, performanceValuationContext: context, holdings: metadata, accountFilter: 'acct-inr', currency: 'INR', selectedAccountCurrency: 'INR', asOf: '2026-09-09', historyComplete: true, accountLabels: new Map([['acct-inr', 'Zerodha']]) };
+const projection = projectPortfolioVisuals(input);
+assert.deepEqual(projection.trendPoints.map((item) => [item.asOf, item.value]), [['2026-03-02', 4200], ['2026-06-01', 4200], ['2026-09-09', 4200]], 'trend sums only eligible same-scope INR values');
+assert.equal(projection.trendPoints[2].source, 'Multiple eligible sources', 'aggregate provenance is not falsely attributed to its first row');
+assert.equal(projection.trendPoints[2].priceDate, null, 'aggregate provenance does not invent one price date');
+assert.deepEqual(projection.topHoldings.map((item) => item.label), ['Alpha', 'Beta', 'Gamma', 'Delta', 'Epsilon'], 'Top 5 is value-ranked and limited');
+assert.deepEqual(projection.accountAllocation, [{ accountId: 'acct-inr', label: 'Zerodha', currency: 'INR', value: 4200 }]);
+assert.deepEqual(projection.xirr, { valuePct: 19.9704969294, asOf: '2026-09-09' }, 'paired unfiltered valuation authorizes XIRR despite a different currency-chart digest');
+assert.equal(trustedXirrForAccount(performance, context, pairedValuation, { ...context, accountId: 'stale-account' }, context, 'INR'), null, 'stale response context suppresses XIRR');
+assert.equal(trustedXirrForAccount(performance, context, { ...pairedValuation, inputDigest: 'wrong-digest' }, context, context, 'INR'), null, 'paired digest mismatch suppresses XIRR');
+assert.equal(trustedXirrForAccount({ ...performance, inputDigest: '' }, context, pairedValuation, context, context, 'INR'), null, 'empty performance digest suppresses XIRR');
+assert.equal(trustedXirrForAccount(performance, context, { ...pairedValuation, inputDigest: '  ' }, context, context, 'INR'), null, 'blank paired digest suppresses XIRR');
+assert.equal(trustedXirrForAccount(performance, context, pairedValuation, context, { ...context, asOf: '2026-09-10' }, 'INR'), null, 'date race suppresses XIRR');
+assert.equal(trustedXirrForAccount({ ...performance, asOf: '2026-09-09x' }, { ...context, asOf: '2026-09-09x' }, { ...pairedValuation, asOf: '2026-09-09x' }, { ...context, asOf: '2026-09-09x' }, { ...context, asOf: '2026-09-09x' }, 'INR'), null, 'invalid returned date suppresses XIRR');
+assert.equal(projectPortfolioVisuals({ ...input, currency: 'USD', selectedAccountCurrency: 'INR' }).xirr, null, 'mixed display currency cannot reuse an account XIRR');
+console.log('portfolio visuals checks passed');

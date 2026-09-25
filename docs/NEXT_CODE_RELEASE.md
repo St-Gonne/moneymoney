@@ -1,8 +1,10 @@
-# Next code release
+# Release scope and remaining work
 
-Assessment: 25 September 2026. **The latest private version is worth preparing as
-an experimental developer release. It is not ready for a whole-workspace push.**
-The current public prototype remains available under MIT.
+Updated 25 September 2026: the bounded developer release below is now included
+in [`clarity/`](../clarity/README.md). It contains current source, a persistent
+synthetic backend, setup instructions, tests and a captured public-demo screen.
+The original assessment is retained below to explain the release boundary.
+It remains unsuitable for a whole-workspace push or real-data demo deployment.
 
 ## Why this needs a deliberate release
 
@@ -59,8 +61,15 @@ available local voice receipt is marked review_required; the offline integration
 successor is prepared-only. A later receipt may supersede that state, so recheck
 current controls before implementation.
 
-## What this publication does
+## What this publication includes
 
-It publishes the product explanation, synthetic screenshots and this source-release
-boundary. It does not publish or certify the newer private source, deploy an app,
-change repository visibility or enable live financial/voice integrations.
+The current Clarity source graph is published under the repository's MIT license,
+with unchanged financial/access-control modules. Its explicit synthetic
+composition uses local files and a public test identity. The source manifest,
+local test receipt and setup instructions are in `clarity/`. The first README
+screenshot was captured from this public candidate; older detail/mobile images
+are labelled with their 23 September date.
+
+Real-data authentication, storage deployment, provider choice and the outstanding
+Comfort/import issues remain follow-up work. No family data, credentials,
+production configuration, git history or private release machinery is included.

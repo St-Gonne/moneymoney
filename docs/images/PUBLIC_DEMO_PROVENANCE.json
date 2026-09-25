@@ -1,0 +1,8 @@
+{
+  "file": "clarity-public-demo.jpg",
+  "sha256": "bbfc6f9fcecc6e41893d0f119f5c722c0156d25f88b976488591167db5a247cd",
+  "capture_date": "2026-09-25",
+  "source": "Public clarity source running locally at 127.0.0.1:5173 with synthetic connected backend",
+  "data": "Invented seeded accounts and values only",
+  "interaction": "Show amounts; actual browser capture"
+}

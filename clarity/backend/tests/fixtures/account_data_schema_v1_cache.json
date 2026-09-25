@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "accountRevisions": [[
+    {"account_id":"fixture-account","owner_scope_id":"fixture-owner","institution":"Fixture institution","account_type":"demat","currency":"INR","source_name":"Fixture source","user_alias":"Fixture alias","custodian_or_dp":"Fixture DP","execution_broker":null,"masked_identifier":"••••1234","provenance":{"source_kind":"manual","source_reference":"fixture-account-v1","revision":1,"recorded_at":"2026-01-01T00:00:00+00:00"},"portfolio_id":"fixture-portfolio","manual_history_complete":true},
+    {"account_id":"fixture-account","owner_scope_id":"fixture-owner","institution":"Fixture institution","account_type":"demat","currency":"INR","source_name":"Fixture source","user_alias":"Fixture alias v2","custodian_or_dp":"Fixture DP","execution_broker":null,"masked_identifier":"••••1234","provenance":{"source_kind":"manual","source_reference":"fixture-account-v2","revision":2,"recorded_at":"2026-01-02T00:00:00+00:00"},"portfolio_id":"fixture-portfolio","manual_history_complete":true}
+  ]],
+  "openingHoldings": [
+    {"fact_id":"fixture-holding","account_id":"fixture-account","owner_scope_id":"fixture-owner","instrument_name":"Fixture fund","isin":"INF000FIXTURE","quantity":"2","as_of":"2026-01-01","currency":"INR","documented_cost":"200","provenance":{"source_kind":"manual","source_reference":"fixture-holding-v1","revision":1,"recorded_at":"2026-01-01T00:00:00+00:00"},"portfolio_id":"fixture-portfolio"}
+  ],
+  "cashFlows": [
+    {"fact_id":"fixture-flow","account_id":"fixture-account","owner_scope_id":"fixture-owner","effective_date":"2026-01-02","amount":"-200","currency":"INR","flow_type":"contribution","note":null,"provenance":{"source_kind":"manual","source_reference":"fixture-flow-v1","revision":1,"recorded_at":"2026-01-02T00:00:00+00:00"},"portfolio_id":"fixture-portfolio"}
+  ],
+  "receipts": [
+    {"route":"/accounts","ownerScopeId":"fixture-owner","portfolioId":"fixture-portfolio","key":"fixture-account-v2","requestDigest":"fixture-account-v2","resultKind":"account","resultId":"fixture-account","revision":2}
+  ],
+  "derivedCache": [
+    {"ownerScopeId":"fixture-owner","portfolioId":"fixture-portfolio","kind":"valuation","asOf":"2026-01-02","inputDigest":"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd","result":"{\"calculationVersion\":\"obsolete-cache-v0\"}"}
+  ]
+}

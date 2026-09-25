@@ -1,93 +1,155 @@
 # MoneyMoney
 
-A family portfolio prototype for Indian and US assets, with a simpler interface
-for an older parent. I started it because the information was spread across
-brokers, statements and accounts, and a single balance hid too much uncertainty.
+I'm building this for my family. Our investments sit across Indian and US
+accounts, statements arrive in different formats, and the person helping manage
+them isn't always the person who needs to understand them.
 
-**Public status: development snapshot.** This repository is not a verified
-production wealth platform. More recent work lives in a separately controlled
-private version. A capability described in that work is not necessarily available
-in this checkout.
+I want one place to answer fairly ordinary questions: what do we own, what is it
+worth, where did that number come from, and what have we missed? I also want my
+dad to be able to use it without learning another complicated finance app.
+
+There isn't a business plan behind this. I don't currently expect to monetise it.
+I'd like it to become useful enough that other people with the same problem can
+use it, change it and help improve it.
+
+**Where it stands:** this repository contains prototype code under MIT. The newer
+private version has moved further on. The screenshots below show that newer local
+version with invented data; cloning this repository does **not** yet give you
+that exact interface. [What needs to happen before the next code release](docs/NEXT_CODE_RELEASE.md).
 
 The name stuck before I noticed the connection: my dad's favourite song is
 ABBA's “Money, Money, Money.”
 
-## What is in this repository
+## What it looks like now
 
-- A React and TypeScript interface for viewing portfolio information.
-- Python ingestion and ledger components, with synthetic test fixtures.
-- XIRR and tax-calculation code with test scripts.
-- Experiments with a simpler parent-facing view and Gemini voice assistance.
+These are unedited captures from the accepted local Clarity review on
+23 September 2026. All accounts and values shown are synthetic. They are working
+screens, not renders, a hosted-product guarantee or evidence of real returns.
 
-These are components to inspect and test. Their presence does not establish
-complete broker coverage, tax-filing suitability, secure multi-user deployment,
-accessibility conformance or correctness for every cash-flow pattern.
+### Clarity — the regular view
 
-## Progress in the private version
+White and Dark versions, a holdings table, account filters and a detail view.
+The intention is a calm place to check the portfolio, with dates and source
+information close to the numbers.
 
-As of September 2026, the separate private work includes statement review,
-account-scoped portfolio views and clearer source-coverage labels. Recent local
-interface work connects overview, holdings and holding detail. The important
-boundary is what each source actually proves:
+![Clarity overview with synthetic dated portfolio values](docs/images/clarity-overview-synthetic.jpg)
 
-- A parsed statement covers a particular account and date; it does not prove a
-  complete family portfolio.
-- The local Schwab path is a review-only preview. It does not save imported
-  holdings, and currency and ownership still need explicit resolution.
-- The local Zerodha cash reader has no portfolio-import bridge.
-- Insufficient price or cash-flow history must remain visible instead of being
-  filled with invented charts or return figures.
+The chart deliberately says that a change in value is not a return. Adding money
+can make the line go up without the investments having performed better.
 
-This is a progress summary, not a release of those private features. Private
-statements, account mappings, credentials and runtime data are not published.
+![Clarity dark holding detail with synthetic data](docs/images/clarity-detail-synthetic.jpg)
 
-## Inspect the public frontend
+The detail view separates documented cost from calculated value and keeps the
+selected account in view.
 
-From a clone of this repository, with a Node version supported by the pinned
-Vite dependency:
+<details>
+<summary>Mobile working screen</summary>
+
+<img src="docs/images/clarity-mobile-synthetic.jpg" alt="Clarity mobile holdings screen with synthetic data" width="300">
+
+This is a scrolled acceptance capture. Mobile still needs less filtering before
+useful information comes into view; it is not a finished marketing screenshot.
+
+</details>
+
+## What works, and where
+
+| Area | Current position |
+| --- | --- |
+| Public code | Earlier React/TypeScript frontend, Python ingestion and ledger components, financial utilities and synthetic tests. |
+| Newer Clarity interface | Overview → holdings → detail accepted locally; dates, account scope and masking exercised with synthetic data. Not yet released in this checkout. |
+| Statement-led portfolio work | The private version has NSDL review and portfolio flows. A statement covers named accounts and dates, not everything the family owns. |
+| Schwab | Local review-only preview. Currency, ownership and the durable import contract still need resolution before saved holdings. |
+| Zerodha cash statements | Narrow local reader; no portfolio-import bridge yet. |
+| Return calculations | Complete dated cash-flow history is needed. A statement balance alone is not enough. Missing history stays unavailable. |
+| Comfort view | An existing simpler card-based view. The next design pass is deferred; it has not received the new Clarity redesign. |
+| Voice | Work in progress. Normal private Comfort Talk is unavailable. The newer local harness tests session controls with a mock, not a live financial conversation. |
+
+## Two views for two different jobs
+
+**Clarity** is for whoever is checking accounts, holdings and source details. It
+uses a restrained blue accent, system fonts, familiar tables and White/Dark
+choices. The aim is readability and enough detail to investigate a number.
+
+**Comfort** is for someone who wants a simpler answer and fewer controls. It
+started with my dad in mind: larger text, larger targets, a small number of
+sections and a more direct route to the information. Making the dashboard larger
+isn't enough. We still need to simplify the language, reduce decisions, make the
+selected account and displayed totals unambiguous, and test it with the person
+it's meant for. High contrast alone does not establish accessibility.
+
+## Why voice is taking longer
+
+The useful version would let someone ask about their own holdings without
+navigating tables. Getting a model to speak is the easy part.
+
+It must use the right person's accounts, know the date and source of a number,
+and say when the answer is unavailable. Changing accounts, signing out or hiding
+amounts must stop the old session from continuing with the old context. It also
+needs a clear choice about which provider receives portfolio information.
+
+The current local work tests cancellation, retries, stale callbacks and privacy
+state with a mock. Live provider integration, microphone use, grounded financial
+answers and an ordinary-user trial remain ahead. Older Gemini experiments in the
+public code are not evidence that the newer Comfort voice flow is ready.
+
+## Who this could suit
+
+People helping manage family finances who want to inspect and adapt the software,
+keep account ownership and source evidence visible, and make it easier for a parent
+to understand the result. Cross-border holdings are part of the problem I'm working
+on, not a claim of complete international broker support.
+
+There are already capable Indian products. [INDmoney](https://www.indmoney.com/features)
+advertises external portfolio tracking, family net worth, Indian/US analytics and
+questions through Claude. [Kuvera](https://kuvera.in/faq) describes direct mutual
+funds, portfolio consolidation and family-account features.
+[Value Research Fund Advisor](https://advisor.valueresearchonline.com/fund-advisor/subscribe/)
+offers research-led mutual-fund tools and a family account. Product descriptions
+checked on 25 September 2026; no comparative product trial was performed.
+
+MoneyMoney's proposed place is smaller: software you can inspect and eventually
+run for your own family, a parent-facing view, and explicit gaps rather than a
+complete-looking number. It may become a better fit for that particular need.
+For effortless setup, mature integrations, trading or investment recommendations,
+the established products are currently the more sensible starting point.
+
+This is not wholly offline today. The private version uses hosted authentication
+and storage; future voice could involve another provider. Choosing where the data
+lives needs to be part of the self-hosting work.
+
+## Help improve it
+
+The most useful help is specific:
+
+- **Comfort design:** a simpler route from “what do I own?” to an understandable
+  answer, with attention to low vision, language and account scope.
+- **Portability:** a reproducible synthetic setup for the next release, with
+  explicit configuration instead of settings inherited from my family setup.
+- **Statement formats:** one named format and version, an invented fixture and
+  an expected result. No real statements in issues or PRs.
+- **Financial edge cases:** a small reproducible calculation case with the
+  expected answer and reasoning.
+- **Voice:** session and privacy design first; no keys or private audio needed.
+
+Design proposals can start now. For code PRs, check that the target exists in this
+public checkout; the newer screenshots aren't a promise that its source is here.
+Please describe the proposed change in an issue before a large patch.
+[Contribution guide](CONTRIBUTING.md) · [next release scope](docs/NEXT_CODE_RELEASE.md).
+
+## Inspect the public prototype
+
+Use a Node version supported by the pinned Vite dependency:
 
 ```sh
 npm ci
 npm run dev
 ```
 
-Inspect with synthetic data. Connecting a provider or deploying the application
-requires separate configuration and review. The current publication update is
-documentation-only; it does not certify this checkout's deployment or setup path.
+Use invented data. The commands describe the earlier public snapshot; this
+publication updates its story and release plan, not its deployment certification.
+The repository also includes `npm run test:xirr`, `npm run test:tax`,
+`npm run test:ui` and `python3 backend/tests/run_all_tests.py`.
 
-## Check individual components
-
-The repository includes these commands:
-
-```sh
-npm run test:xirr
-npm run test:tax
-npm run test:ui
-python3 backend/tests/run_all_tests.py
-```
-
-Read the scripts and install their dependencies before running them. Test counts
-are not coverage percentages. Passing a synthetic suite does not establish real
-statement support, legal tax correctness or live account isolation.
-
-Earlier README claims of “production-grade,” “100% test coverage” and guaranteed
-XIRR convergence were too broad and have been removed. The project should earn
-those claims through inspectable evidence, not wording.
-
-## Contributing
-
-Start with a reproducible defect in the public checkout: a synthetic calculation
-case, a documented setup failure, or a specific interface problem. See
-[CONTRIBUTING.md](CONTRIBUTING.md). Discuss parser or financial-model changes
-before implementing them so the supported input and expected result are clear.
-
-## Who did what
-
-I define the product, constraints and acceptance criteria. AI coding tools write
-the implementation under my direction. The reason for building it is practical:
-help my family understand what we own, where a number came from, and what is still
-missing.
-
-## License
-
-[MIT](LICENSE).
+I make the product decisions and review the results. AI coding tools write the
+implementation under my direction. [MIT license](LICENSE).

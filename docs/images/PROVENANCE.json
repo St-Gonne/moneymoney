@@ -1,0 +1,20 @@
+[
+  {
+    "file": "clarity-overview-synthetic.jpg",
+    "sha256": "f28bd7d7f347655d64018d7923cd12e0be12a0a8a360c4c66c8692c47cda93f9",
+    "source_date": "2026-09-23",
+    "kind": "local synthetic Clarity acceptance screenshot"
+  },
+  {
+    "file": "clarity-detail-synthetic.jpg",
+    "sha256": "dbed83346b86417cb6185daeafe106c9a7b2e04dd5d262f7a89c4ab25333b0df",
+    "source_date": "2026-09-23",
+    "kind": "local synthetic Clarity acceptance screenshot"
+  },
+  {
+    "file": "clarity-mobile-synthetic.jpg",
+    "sha256": "a54aa2877a6881dd101bb5c4eb9c7f20f9103db69c49dde6391aa7d4bbbdc319",
+    "source_date": "2026-09-23",
+    "kind": "local synthetic Clarity acceptance screenshot"
+  }
+]

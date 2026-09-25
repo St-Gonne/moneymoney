@@ -12,27 +12,28 @@ There isn't a business plan behind this. I don't currently expect to monetise it
 I'd like it to become useful enough that other people with the same problem can
 use it, change it and help improve it.
 
-**Where it stands:** this repository contains prototype code under MIT. The newer
-private version has moved further on. The screenshots below show that newer local
-version with invented data; cloning this repository does **not** yet give you
-that exact interface. [What needs to happen before the next code release](docs/NEXT_CODE_RELEASE.md).
+**The current Clarity source is now in [`clarity/`](clarity/README.md).** It runs
+with a connected local Python backend and invented portfolio data. No account or
+API key is needed. This is a developer alpha: useful to run, inspect and improve;
+real-family self-hosting still needs a reviewed authentication and storage setup.
+The original prototype remains at the repository root.
 
 The name stuck before I noticed the connection: my dad's favourite song is
 ABBA's “Money, Money, Money.”
 
 ## What it looks like now
 
-These are unedited captures from the accepted local Clarity review on
-23 September 2026. All accounts and values shown are synthetic. They are working
-screens, not renders, a hosted-product guarantee or evidence of real returns.
-
+The first image is the public Clarity source running locally on 25 September
+2026. The detail/mobile captures below are from the accepted local Clarity review
+on 23 September. All accounts and values shown are invented. These are working
+screens, not renders or evidence of real returns.
 ### Clarity — the regular view
 
 White and Dark versions, a holdings table, account filters and a detail view.
 The intention is a calm place to check the portfolio, with dates and source
 information close to the numbers.
 
-![Clarity overview with synthetic dated portfolio values](docs/images/clarity-overview-synthetic.jpg)
+![Public Clarity demo running locally with synthetic portfolio data](docs/images/clarity-public-demo.jpg)
 
 The chart deliberately says that a change in value is not a return. Adding money
 can make the line go up without the investments having performed better.
@@ -56,8 +57,8 @@ useful information comes into view; it is not a finished marketing screenshot.
 
 | Area | Current position |
 | --- | --- |
-| Public code | Earlier React/TypeScript frontend, Python ingestion and ledger components, financial utilities and synthetic tests. |
-| Newer Clarity interface | Overview → holdings → detail accepted locally; dates, account scope and masking exercised with synthetic data. Not yet released in this checkout. |
+| Public code | Current Clarity source in `clarity/`, with local persistent account facts, valuation, synthetic setup and tests. Earlier prototype remains at the root. |
+| Newer Clarity interface | Overview → holdings → detail accepted locally; dates, account scope and masking exercised with synthetic data. Included in the new `clarity/` source release. |
 | Statement-led portfolio work | The private version has NSDL review and portfolio flows. A statement covers named accounts and dates, not everything the family owns. |
 | Schwab | Local review-only preview. Currency, ownership and the durable import contract still need resolution before saved holdings. |
 | Zerodha cash statements | Narrow local reader; no portfolio-import bridge yet. |
@@ -117,8 +118,8 @@ policy review does not establish that INDmoney sells personal data.
 
 MoneyMoney's direction is a tool for understanding what the family owns, without
 turning that understanding into a sales opportunity. I don't currently plan to
-monetise it. I want people to be able to inspect it, adapt it and eventually run
-the current version for themselves. The parent-facing view and visible source
+monetise it. I want people to be able to inspect it, adapt it and run
+the current synthetic version for themselves. The parent-facing view and visible source
 gaps are part of the same idea: make the information useful to the family.
 
 That makes privacy, control and a simpler family experience the reasons to choose
@@ -127,11 +128,11 @@ Someone who shares those priorities and is comfortable with self-hosting could b
 a better fit than someone looking for a ready-made investing platform.
 
 **Where that promise stands today:** the private version uses hosted authentication
-and storage. It is not wholly offline, and the latest version is not yet a portable
-public release. Future voice may send selected information to a model provider;
+and storage. It is not wholly offline, and real-data self-hosting is not yet packaged. The public Clarity
+demo runs locally with invented data and a public demo token. Future voice may send selected information to a model provider;
 that needs an explicit choice. Publishing inspectable code helps, but it does not
-by itself prove privacy. The next release has to make the actual data flows and
-self-hosting choices clear.
+by itself prove privacy. The [Clarity setup guide](clarity/README.md) explains the local data flows and
+what remains before real-data self-hosting.
 
 ## Help improve it
 
@@ -139,20 +140,26 @@ The most useful help is specific:
 
 - **Comfort design:** a simpler route from “what do I own?” to an understandable
   answer, with attention to low vision, language and account scope.
-- **Portability:** a reproducible synthetic setup for the next release, with
-  explicit configuration instead of settings inherited from my family setup.
+- **Portability:** try the new synthetic setup on another machine and report
+  reproducible installation failures; real-data self-hosting is a separate step.
 - **Statement formats:** one named format and version, an invented fixture and
   an expected result. No real statements in issues or PRs.
 - **Financial edge cases:** a small reproducible calculation case with the
   expected answer and reasoning.
 - **Voice:** session and privacy design first; no keys or private audio needed.
 
-Design proposals can start now. For code PRs, check that the target exists in this
-public checkout; the newer screenshots aren't a promise that its source is here.
+Code and design PRs can target the current `clarity/` source. Start with the local
+synthetic setup so someone else can reproduce your change.
 Please describe the proposed change in an issue before a large patch.
 [Contribution guide](CONTRIBUTING.md) · [next release scope](docs/NEXT_CODE_RELEASE.md).
 
-## Inspect the public prototype
+## Run the current version
+
+Start with the [Clarity setup and test commands](clarity/README.md). You can try
+the interface, change invented manual records and restart the backend to check
+persistence. No real statements or credentials are needed.
+
+## Inspect the earlier prototype
 
 Use a Node version supported by the pinned Vite dependency:
 

@@ -1,0 +1,20 @@
+export type AccountType = 'demat' | 'mutual_fund' | 'cash' | 'other';
+export type FlowType = 'contribution' | 'withdrawal' | 'dividend' | 'transfer';
+export type ManualAccountDraft = { accountId: string; portfolioId: string; institution: string; accountType: AccountType; currency: string; sourceName: string; userAlias: string; custodianOrDp: string; executionBroker: string; maskedIdentifier: string; manualHistoryComplete: boolean; expectedRevision?: number | null };
+export type OpeningHoldingDraft = { accountId: string; portfolioId: string; factId: string; instrumentName: string; isin: string; quantity: string; asOf: string; currency: string; documentedCost: string; expectedRevision?: number | null };
+export type CashFlowDraft = { accountId: string; portfolioId: string; factId: string; effectiveDate: string; amount: string; currency: string; flowType: FlowType; note: string; expectedRevision?: number | null };
+export type ProvenanceMeta = { revision?: number; recorded_at?: string; source_kind?: 'manual' | 'statement' | string };
+export type AccountRecord = { account_id: string; owner_scope_id: string; portfolio_id: string; institution: string; account_type: AccountType; currency: string; source_name: string | null; user_alias: string | null; custodian_or_dp: string | null; execution_broker: string | null; masked_identifier: string | null; manual_history_complete?: boolean; provenance?: ProvenanceMeta };
+export type OpeningHoldingRecord = { fact_id: string; account_id: string; owner_scope_id: string; portfolio_id: string; instrument_name: string; isin: string | null; quantity: string; as_of: string; currency: string; documented_cost: string | null; voided?: boolean; provenance?: ProvenanceMeta };
+export type CashFlowRecord = { fact_id: string; account_id: string; owner_scope_id: string; portfolio_id: string; effective_date: string; amount: string; currency: string; flow_type: FlowType; note: string | null; voided?: boolean; provenance?: ProvenanceMeta };
+export type AccountRevision = { accountId: string; revisions: AccountRecord[] };
+export type FactRevision<T> = { factId: string; revisions: T[] };
+export type AccountDataSnapshot = { accounts: AccountRecord[]; openingHoldings: OpeningHoldingRecord[]; cashFlows: CashFlowRecord[]; accountRevisions?: AccountRevision[]; openingHoldingRevisions?: FactRevision<OpeningHoldingRecord>[]; cashFlowRevisions?: FactRevision<CashFlowRecord>[] };
+export class AccountDataApiError extends Error { readonly code: string; readonly status: number; constructor(code: string, status: number) { super(code); this.name = 'AccountDataApiError'; this.code = code; this.status = status; } }
+export type AccountDataActionKind = 'account' | 'holding' | 'cash';
+export type AccountDataAction = { kind: AccountDataActionKind; fingerprint: string; key: string };
+export const beginAccountDataAction = (prior: AccountDataAction | null, kind: AccountDataActionKind, fingerprint: string, createKey: () => string): AccountDataAction => ({ kind, fingerprint, key: prior?.kind === kind && prior.fingerprint === fingerprint ? prior.key : createKey() });
+export const accountDataRequestIsCurrent = (requestId: number, currentId: number, aborted = false): boolean => requestId === currentId && !aborted;
+export const hasCurrentAuthorizedAccount = (snapshot: AccountDataSnapshot, accountId: string, portfolioId?: string): boolean => Boolean(accountId) && snapshot.accounts.some((account) => account.account_id === accountId && (!portfolioId || account.portfolio_id === portfolioId));
+export const restoreSelectedAccount = (snapshot: AccountDataSnapshot, accountId: string, portfolioId: string): string => hasCurrentAuthorizedAccount(snapshot, accountId, portfolioId) ? accountId : '';
+export const privacyValue = (value: string | null | undefined, masked: boolean): string => masked ? '••••••' : (value || '');

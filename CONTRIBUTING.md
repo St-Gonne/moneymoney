@@ -1,8 +1,8 @@
 # Contributing to MoneyMoney
 
-This repository is a public development snapshot. Start with a small,
-reproducible problem in this checkout. Current private development is separate;
-a feature described in the project story may not be implemented here.
+The current source release is in `clarity/`. Start with its synthetic setup and
+a small reproducible problem. The repository root retains the older prototype;
+please say which tree your change targets.
 
 Useful contributions include synthetic regression cases, corrections to setup
 instructions, and specific interface or calculation defects.
@@ -27,14 +27,15 @@ A useful bug report contains the smallest synthetic input that reproduces it.
 Use the relevant repository scripts and report the exact commands and results:
 
 ```sh
+cd clarity
+npm ci
+npm test
 npm run build
-npm run test:xirr
-npm run test:tax
-npm run test:ui
-python3 backend/tests/run_all_tests.py
+PYTHONPATH=backend .venv/bin/python -m pytest backend/tests -q
+PYTHONPATH=backend .venv/bin/python scripts/test-private-nsdl-connected-demo.py
 ```
 
-Install the required frontend/backend dependencies first. If a baseline command
+Follow [the Clarity setup](clarity/README.md) to create the Python environment first. If a baseline command
 fails, report the failure; do not omit it or claim a full pass. Avoid unrelated
 refactors and changes to cloud resources or live data.
 

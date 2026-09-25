@@ -1,0 +1,24 @@
+import { useState } from 'react';
+import type { ReadinessAccountEvidence, ReadinessItem, ReadinessRequestState } from '../utils/portfolioReadiness.ts';
+
+type Props = { accounts: ReadinessAccountEvidence[]; selectedAccountId: string; onSelectAccount: (accountId: string) => void; items: ReadinessItem[]; factsState: ReadinessRequestState; metricsState: ReadinessRequestState; supportCopy?: string; onRetryFacts: () => void; onRetryMetrics: () => void; masked: boolean; onAction: (item: ReadinessItem) => void };
+const dateText = (value: string | undefined, masked: boolean) => !value ? 'Unavailable' : masked ? 'Hidden by Privacy Shield' : value;
+
+export function PortfolioReadinessPanel({ accounts, selectedAccountId, onSelectAccount, items, factsState, metricsState, supportCopy, onRetryFacts, onRetryMetrics, masked, onAction }: Props) {
+  const [copyStatus, setCopyStatus] = useState('');
+  const item = items.find((candidate) => candidate.accountId === selectedAccountId);
+  const copySupport = async () => {
+    if (!supportCopy) return;
+    try { await navigator.clipboard.writeText(supportCopy); setCopyStatus('Safe support details copied.'); }
+    catch { setCopyStatus('Copy was unavailable. Select the safe details below.'); }
+  };
+  return <section className="card portfolio-surface" aria-label="Data readiness"><p className="nsdl-section-eyebrow">Data readiness</p><h1>Readiness by saved account</h1><p className="text-sm text-theme-secondary">Readiness is checked one authorized account at a time. It never combines account scopes.</p>
+    <label className="text-xs text-theme-secondary block mt-3">Account<select aria-label="Readiness account" className="nsdl-control nsdl-input mt-1 w-full" value={selectedAccountId} onChange={(event) => { setCopyStatus(''); onSelectAccount(event.target.value); }} disabled={factsState === 'loading'}><option value="">Select a saved account</option>{accounts.map((account) => <option key={account.accountId} value={account.accountId}>{account.label}</option>)}</select></label>
+    {factsState === 'loading' && <p role="status">Loading saved account facts…</p>}
+    {factsState === 'error' && <div role="alert"><p>Saved account facts could not be loaded. No empty account set was assumed.</p><button type="button" className="nsdl-control nsdl-button nsdl-button-secondary" onClick={onRetryFacts}>Retry saved facts</button></div>}
+    {selectedAccountId && factsState === 'ready' && metricsState === 'loading' && <p role="status">Loading readiness evidence for the selected account…</p>}
+    {selectedAccountId && factsState === 'ready' && metricsState === 'error' && <div role="alert"><p>Readiness evidence could not be confirmed for this account.</p><button type="button" className="nsdl-control nsdl-button nsdl-button-secondary" onClick={onRetryMetrics}>Retry readiness</button>{supportCopy && <div className="portfolio-safe-support"><button type="button" className="nsdl-control nsdl-button nsdl-button-secondary" onClick={() => void copySupport()}>Copy support details</button><output aria-live="polite">{copyStatus}</output><code>{supportCopy}</code></div>}</div>}
+    {item && factsState === 'ready' && <article className="portfolio-readiness-item"><div><strong>{item.label}</strong><span>{item.status}</span></div><p>{item.message}</p><dl><div><dt>Currency</dt><dd>{item.currency || 'Unavailable'}</dd></div><div><dt>Source</dt><dd>{item.sourceKind === 'STATEMENT' ? 'Imported statement evidence' : 'Manual facts'}</dd></div><div><dt>Source date</dt><dd>{dateText(item.sourceDate, masked)}</dd></div><div><dt>History attestation</dt><dd>{item.sourceKind === 'STATEMENT' ? 'Not a manual-history attestation' : item.historyAttested ? 'Declared complete by the user; not independently verified' : 'Not declared complete'}</dd></div><div><dt>Valuation date</dt><dd>{dateText(item.asOf, masked)}</dd></div><div><dt>Valuation evidence</dt><dd>{item.valuationEvidence.length ? item.valuationEvidence.map((value, index) => <span key={`${index}-${value}`} className="block">{masked ? value.replace(/\d{4}-\d{2}-\d{2}/g, 'date hidden') : value}</span>) : 'Not available for this exact scope.'}</dd></div><div><dt>History coverage</dt><dd>{item.historyEvidence}</dd></div><div><dt>Gain result</dt><dd>{item.gainEvidence}</dd></div><div><dt>XIRR result</dt><dd>{item.xirrEvidence}</dd></div><div><dt>Reconciliation</dt><dd>{item.reconciliationEvidence}</dd></div></dl><button type="button" className="nsdl-control nsdl-button nsdl-button-secondary" onClick={() => onAction(item)}>{item.nextAction === 'cash-flows' ? 'Add cash flow' : item.nextAction === 'holdings' ? 'Inspect holdings' : item.nextAction === 'statements' ? 'View statement details' : 'Inspect account'}</button></article>}
+    {!selectedAccountId && factsState === 'ready' && <p>Select a saved account to request its readiness.</p>}
+  </section>;
+}

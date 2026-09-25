@@ -1,0 +1,10 @@
+fastapi==0.141.1
+uvicorn==0.52.4
+python-multipart==0.0.32
+pikepdf==10.12.0
+pypdfium2==5.13.0
+casparser==1.4.0
+casparser-isin==2026.6.9
+pdfplumber==0.11.7
+httpx==0.28.1
+pytest==8.4.2

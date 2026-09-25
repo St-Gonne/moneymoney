@@ -100,23 +100,38 @@ keep account ownership and source evidence visible, and make it easier for a par
 to understand the result. Cross-border holdings are part of the problem I'm working
 on, not a claim of complete international broker support.
 
-There are already capable Indian products. [INDmoney](https://www.indmoney.com/features)
-advertises external portfolio tracking, family net worth, Indian/US analytics and
-questions through Claude. [Kuvera](https://kuvera.in/faq) describes direct mutual
-funds, portfolio consolidation and family-account features.
-[Value Research Fund Advisor](https://advisor.valueresearchonline.com/fund-advisor/subscribe/)
-offers research-led mutual-fund tools and a family account. Product descriptions
-checked on 25 September 2026; no comparative product trial was performed.
+## Why build this when other apps exist?
 
-MoneyMoney's proposed place is smaller: software you can inspect and eventually
-run for your own family, a parent-facing view, and explicit gaps rather than a
-complete-looking number. It may become a better fit for that particular need.
-For effortless setup, mature integrations, trading or investment recommendations,
-the established products are currently the more sensible starting point.
+The first question for me is who holds the financial picture, and what they want
+to do with it. A convenient dashboard is useful. So is being able to inspect the
+software, choose where it runs and keep it out of a business built around selling
+financial products.
 
-This is not wholly offline today. The private version uses hosted authentication
-and storage; future voice could involve another provider. Choosing where the data
-lives needs to be part of the self-hosting work.
+[INDmoney](https://www.indmoney.com/features) has broad tracking and investment
+features. Its [privacy policy](https://www.indmoney.com/privacy-policy), checked on
+25 September 2026, permits personal information to be used for marketing and
+promotional communications, and describes sharing with service providers, group
+companies and business partners. That is a provider-managed commercial service,
+not the same arrangement as running a family tool under your own control. This
+policy review does not establish that INDmoney sells personal data.
+
+MoneyMoney's direction is a tool for understanding what the family owns, without
+turning that understanding into a sales opportunity. I don't currently plan to
+monetise it. I want people to be able to inspect it, adapt it and eventually run
+the current version for themselves. The parent-facing view and visible source
+gaps are part of the same idea: make the information useful to the family.
+
+That makes privacy, control and a simpler family experience the reasons to choose
+it. A longer integration list or an AI chat button isn't the point of difference.
+Someone who shares those priorities and is comfortable with self-hosting could be
+a better fit than someone looking for a ready-made investing platform.
+
+**Where that promise stands today:** the private version uses hosted authentication
+and storage. It is not wholly offline, and the latest version is not yet a portable
+public release. Future voice may send selected information to a model provider;
+that needs an explicit choice. Publishing inspectable code helps, but it does not
+by itself prove privacy. The next release has to make the actual data flows and
+self-hosting choices clear.
 
 ## Help improve it
 

@@ -15,6 +15,20 @@ Use Node 22.18 or newer and Python 3.11. The first install downloads packages;
 the running demo uses local files and loopback HTTP. Commands below are for
 macOS/Linux. Windows setup is an open contribution.
 
+The shortest route, from the repository root:
+
+```sh
+python3.11 clarity/scripts/demo.py --install
+```
+
+This installs pinned packages into the checkout, starts both loopback servers and
+opens the browser. Later runs can omit `--install`. Ctrl-C stops both servers
+started by this command; it preserves your invented manual records. It refuses to
+start if either port is already occupied. Use `--no-browser` for terminal-only
+startup, or `--smoke` to check startup with temporary invented data and then exit.
+
+### Manual two-terminal setup
+
 From the repository root:
 
 ```sh

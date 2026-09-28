@@ -1,5 +1,7 @@
 # MoneyMoney
 
+[![Build checks](https://github.com/St-Gonne/moneymoney/actions/workflows/clarity.yml/badge.svg)](https://github.com/St-Gonne/moneymoney/actions/workflows/clarity.yml)
+
 I'm building this for my family. Our investments sit across Indian and US
 accounts, statements arrive in different formats, and the person helping manage
 them isn't always the person who needs to understand them.
@@ -20,6 +22,25 @@ The original prototype remains at the repository root.
 
 The name stuck before I noticed the connection: my dad's favourite song is
 ABBA's “Money, Money, Money.”
+
+## Try the current demo
+
+Python 3.11 and Node 22.18+ on macOS/Linux:
+
+```sh
+git clone https://github.com/St-Gonne/moneymoney.git
+cd moneymoney
+python3.11 clarity/scripts/demo.py --install
+```
+
+One terminal starts both parts and opens the interface. The first run downloads
+pinned packages; later runs can omit `--install`. Ctrl-C stops both servers.
+Use **Show amounts**, open **Holdings**, then open a holding. Everything is invented.
+[Full setup and limits](clarity/README.md).
+
+**First contribution:** [try the three-minute walkthrough](docs/FIRST_RUN.md)
+and tell me what was confusing or broken. You don't need to write code.
+If you find this useful, a star helps people find it. Fork it when you want to change it.
 
 ## What it looks like now
 

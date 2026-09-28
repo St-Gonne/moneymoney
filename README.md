@@ -18,7 +18,7 @@ use it, change it and help improve it.
 with a connected local Python backend and invented portfolio data. No account or
 API key is needed. This is a developer alpha: useful to run, inspect and improve;
 real-family self-hosting still needs a reviewed authentication and storage setup.
-The original prototype remains at the repository root.
+The original prototype remains at the repository root; its notes are in [`docs/prototype/`](docs/prototype/README.md).
 
 The name stuck before I noticed the connection: my dad's favourite song is
 ABBA's “Money, Money, Money.”
@@ -83,6 +83,7 @@ useful information comes into view; it is not a finished marketing screenshot.
 | Statement-led portfolio work | The private version has NSDL review and portfolio flows. A statement covers named accounts and dates, not everything the family owns. |
 | Schwab | Local review-only preview. Currency, ownership and the durable import contract still need resolution before saved holdings. |
 | Zerodha cash statements | Narrow local reader; no portfolio-import bridge yet. |
+| Gmail import, locked PDFs, contract notes, cross-checks | Being built and tested against my own family's statements in a private repository. Not in this public code yet; I'll publish it once it runs cleanly without real data in it. |
 | Return calculations | Complete dated cash-flow history is needed. A statement balance alone is not enough. Missing history stays unavailable. |
 | Comfort view | An existing simpler card-based view. The next design pass is deferred; it has not received the new Clarity redesign. |
 | Voice | Work in progress. Normal private Comfort Talk is unavailable. The newer local harness tests session controls with a mock, not a live financial conversation. |

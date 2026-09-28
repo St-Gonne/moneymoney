@@ -28,9 +28,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onLoginSuccess }) => {
       let displayName = "Alex Taylor (Admin)";
       if (cleanEmail === 'robert.taylor@example.com' || cleanEmail.includes('robert') || cleanEmail.includes('father')) displayName = "Robert Taylor (Father)";
       else if (cleanEmail === 'margaret.taylor@example.com' || cleanEmail.includes('margaret') || cleanEmail.includes('mother')) displayName = "Margaret Taylor";
-      else if (cleanEmail.includes('viewer.one')) displayName = "Viewer One (Viewer)";
-      else if (cleanEmail.includes('viewer.two')) displayName = "Viewer Two (Viewer)";
-      else if (cleanEmail.includes('viewer.three')) displayName = "Viewer Three (Viewer)";
+      else if (cleanEmail === 'demo.viewer@example.com') displayName = "Demo Viewer";
       else displayName = `${cleanEmail.split('@')[0]} (Member)`;
 
       onLoginSuccess({

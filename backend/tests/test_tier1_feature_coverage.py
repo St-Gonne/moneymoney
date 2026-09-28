@@ -1,6 +1,6 @@
 """
 Tier 1: Feature Coverage Test Suite (MoneyMoney Ingestion Pipeline)
-Covers all 16 features from PROJECT.md Feature Inventory with >=5 test cases per feature (Total >= 80 test cases).
+Covers all 16 features from docs/prototype/PROJECT.md Feature Inventory with >=5 test cases per feature (Total >= 80 test cases).
 """
 import unittest
 from datetime import date, datetime

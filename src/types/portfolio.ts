@@ -97,8 +97,8 @@ export function getAvatarPreset(avatarId?: string): AvatarPreset | undefined {
 
 export function getRoleDisplay(role?: UserRole, email?: string) {
   const cleanEmail = email?.toLowerCase() || '';
-  const isDemo = cleanEmail.includes('viewer.two') || cleanEmail.includes('viewer.one') || cleanEmail.includes('viewer.three');
-  const isAdmin = role === 'ADMIN' || (!role && (cleanEmail.includes('admin') || cleanEmail.includes('alex') || cleanEmail.includes('sharan')));
+  const isDemo = cleanEmail === 'demo.viewer@example.com';
+  const isAdmin = role === 'ADMIN' || (!role && (cleanEmail.includes('admin') || cleanEmail.includes('alex')));
   const isAdvisor = role === 'ADVISOR';
   const isViewer = role === 'VIEWER' || (!role && isDemo);
   if (isAdmin) {
